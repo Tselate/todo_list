@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List</title>
+</head>
+<body>
+    <h1>ToDo List</h1>
+    <h3>Projects</h3>
+    <div id="project-list"></div>
+    <button id="new-project-btn">New Project</button>
+    <button id="delete-button">Delete</button>
+    <div id="new-project-el">
+        <input type="text" id="project-input"> 
+        <button id="add-project">Add</button>
+        <button id="cancel-project">Cancel</button>
+    </div>
+
+
+    <h3>Tasks</h3>
+    <div id="task-div"></div>
+
+    <button id="new-task">New Task</button>
+    <button id="delete-task">Delete Task</button>
+    <div id="new-task-el">
+        <form>
+            <label for="website">Title:</label>
+            <input type="text" id="task-title" required> <br>
+            <label for="website">Description:</label>
+            <input type="text" id="task-description" required> <br>
+            <label for="website">Due Date:</label>
+            <input type="text" id="task-dueDate" required> <br>
+            <label for="website">Priorty:</label>
+            <input type="text" id="task-priorty" required> <br>
+            <label for="website">Notes:</label>
+            <input type="text" id="task-notes" required> <br>
+            <input type="submit" id="add-task" value="Add">
+            <button id="cancel-task">Cancel</button>
+          </form>
+    </div>
+  
+    
+   
+    <script src="main.js"></script>
+</body>
+</html>
