@@ -81,7 +81,7 @@ export function slectedProjectExported () {
         const toDo = new task
         for (let i = 0; i < newTaskName.length; i++) {
             if (toDo.taskNameId = selectedProject.innerHTML) {
-                taskDiv.innerHTML = newTaskName
+                taskDiv.innerHTML = newTaskName[toDo.taskTitile]
             }
         }
 
