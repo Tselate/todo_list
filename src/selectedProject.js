@@ -51,41 +51,57 @@ function newTaskCancelled () {
 //Save new array to local storage 
 let newTaskName = JSON.parse(localStorage.getItem("taskArrayKey")) || []
 
+
+
 projectList.addEventListener("click", function addTaskandMakeArray (e) {
     let idOfProjectElement = e.target.id
     let selectedProject = document.getElementById(idOfProjectElement)
     taskDiv.innerHTML = "Project: " + selectedProject.innerHTML 
     newTask.style.visibility = "visible"
 
-   
-
-    addNewTask.addEventListener("click", function printOut (e) {
-        e.preventDefault()
+    addNewTask.addEventListener("click", function printOut () {
         tNameId = selectedProject.innerHTML
         const toDo = new task (tTitle.value, tDescription.value, tDueDate.value, tPriorty.value, tNotes.value, tNameId)
+       console.log(toDo)
         newTaskName.push(toDo)
         localStorage.setItem("taskArrayKey", JSON.stringify(newTaskName))
-    })  
-   
-    let taskList = newTaskName.filter( function displayIt (list) {
-        return list.taskNameId === selectedProject.innerHTML
-    })
+    }) 
 
-
-
-    console.log(taskList)
-
-   // localStorage.clear("taskArrayKey")
     
-    // console.log(newTaskName)
-    // const toDo = new task 
-    // for (let i = 0; i < newTaskName.length; i++) {
-    //     if (newTaskName[i].taskNameId === selectedProject.innerHTML) {
-    //        console.log(newTaskName[i].taskNameId)
+    console.log(newTaskName)
+    // let taskList = newTaskName.filter( function displayIt (list) {
+    //     return list.taskNameId === selectedProject.innerHTML
+    // })
+
+//     console.log(taskList)
+
+//    // localStorage.clear("taskArrayKey")
+    
+//     // console.log(newTaskName)
+//     // const toDo = new task 
+//     // for (let i = 0; i < newTaskName.length; i++) {
+//     //     if (newTaskName[i].taskNameId === selectedProject.innerHTML) {
+//     //        console.log(newTaskName[i].taskNameId)
         
-    //     }
-    // }
+//     //     }
+//     // }
 })
+
+
+ //projectList.addEventListener("click", function displayTasks (e) {
+//     let idOfProjectElement = e.target.id
+//     let selectedProject = document.getElementById(idOfProjectElement)
+//     localStorage.clear("taskArrayKey")
+    
+     //console.log(newTaskName)
+//     const toDo = new task 
+//     for (let i = 0; i < newTaskName.length; i++) {
+//         if (newTaskName[i].taskNameId === selectedProject.innerHTML) {
+//            console.log(newTaskName[i].taskNameId)
+        
+//         }
+//     }
+//})
 
 
 export function slectedProjectExported () {
