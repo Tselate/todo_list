@@ -1,4 +1,5 @@
 import {NPexported} from "./newproject.js"
+import {projects} from "./newproject.js"
 NPexported()
 
 const newTask = document.getElementById("new-task")
@@ -56,19 +57,29 @@ let newTaskName = JSON.parse(localStorage.getItem("taskArrayKey")) || []
 projectList.addEventListener("click", function addTaskandMakeArray (e) {
     let idOfProjectElement = e.target.id
     let selectedProject = document.getElementById(idOfProjectElement)
-    taskDiv.innerHTML = "Project: " + selectedProject.innerHTML 
+    console.log(projects)
+    let letSee = projects.filter(function mine (project) {
+       return project === selectedProject.innerHTML 
+    })
+    
+    console.log(letSee)
+
+    
+    taskDiv.innerHTML = "Project: " + letSee
     newTask.style.visibility = "visible"
 
     addNewTask.addEventListener("click", function printOut () {
         tNameId = selectedProject.innerHTML
         const toDo = new task (tTitle.value, tDescription.value, tDueDate.value, tPriorty.value, tNotes.value, tNameId)
-       console.log(toDo)
-        newTaskName.push(toDo)
+        console.log('yes')
+        letSee.push(toDo)
         localStorage.setItem("taskArrayKey", JSON.stringify(newTaskName))
     }) 
+     
+
 
     
-    console.log(newTaskName)
+    console.log(letSee)
     // let taskList = newTaskName.filter( function displayIt (list) {
     //     return list.taskNameId === selectedProject.innerHTML
     // })
@@ -85,23 +96,26 @@ projectList.addEventListener("click", function addTaskandMakeArray (e) {
         
 //     //     }
 //     // }
+
 })
 
 
- //projectList.addEventListener("click", function displayTasks (e) {
-//     let idOfProjectElement = e.target.id
-//     let selectedProject = document.getElementById(idOfProjectElement)
-//     localStorage.clear("taskArrayKey")
-    
-     //console.log(newTaskName)
-//     const toDo = new task 
-//     for (let i = 0; i < newTaskName.length; i++) {
-//         if (newTaskName[i].taskNameId === selectedProject.innerHTML) {
-//            console.log(newTaskName[i].taskNameId)
+
+ projectList.addEventListener("click", function displayTasks (e) {
+    let idOfProjectElement = e.target.id
+    let selectedProject = document.getElementById(idOfProjectElement)
+    //localStorage.clear("taskArrayKey")    
+    console.log(newTaskName)
+    const toDo = new task 
+    for (let i = 0; i < newTaskName.length; i++) {
+        if (newTaskName[i].taskNameId === selectedProject.innerHTML) {
+           console.log(newTaskName[i].taskNameId)
         
-//         }
-//     }
-//})
+        }
+    }
+
+   
+})
 
 
 export function slectedProjectExported () {

@@ -9,7 +9,7 @@ const deleteButton = document.getElementById("delete-button")
 
 
 //retrieve items from local storage and render onto page
-let projects = JSON.parse(localStorage.getItem("projectsKey")) || []
+export let projects = JSON.parse(localStorage.getItem("projectsKey")) || []
 let projectsFromLocalStorage = JSON.parse(localStorage.getItem("projectsKey"))
 
 if (projectsFromLocalStorage) {
