@@ -53,50 +53,28 @@ function newTaskCancelled () {
 let newTaskName = JSON.parse(localStorage.getItem("taskArrayKey")) || []
 
 
-
 projectList.addEventListener("click", function addTaskandMakeArray (e) {
     let idOfProjectElement = e.target.id
     let selectedProject = document.getElementById(idOfProjectElement)
-    console.log(projects)
-    let letSee = projects.filter(function mine (project) {
+    let projectName = projects.filter(function mine (project) {
        return project === selectedProject.innerHTML 
     })
     
-    console.log(letSee)
+    console.log(projectName)
 
-    
-    taskDiv.innerHTML = "Project: " + letSee
+    taskDiv.innerHTML = "Project: " + projectName
     newTask.style.visibility = "visible"
 
     addNewTask.addEventListener("click", function printOut () {
         tNameId = selectedProject.innerHTML
         const toDo = new task (tTitle.value, tDescription.value, tDueDate.value, tPriorty.value, tNotes.value, tNameId)
-        console.log('yes')
-        letSee.push(toDo)
+        const selected = projects.find(toDoTask => toDoTask.id === selectedId)
+        selected.newTaskName.push(toDo)
+       // newTaskName.push(toDo)
         localStorage.setItem("taskArrayKey", JSON.stringify(newTaskName))
-    }) 
-     
-
-
-    
-    console.log(letSee)
-    // let taskList = newTaskName.filter( function displayIt (list) {
-    //     return list.taskNameId === selectedProject.innerHTML
-    // })
-
-//     console.log(taskList)
-
-//    // localStorage.clear("taskArrayKey")
-    
-//     // console.log(newTaskName)
-//     // const toDo = new task 
-//     // for (let i = 0; i < newTaskName.length; i++) {
-//     //     if (newTaskName[i].taskNameId === selectedProject.innerHTML) {
-//     //        console.log(newTaskName[i].taskNameId)
-        
-//     //     }
-//     // }
-
+    })     
+    console.log(newTaskName)
+    console.log(selected)
 })
 
 
