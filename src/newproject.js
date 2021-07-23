@@ -32,22 +32,29 @@ function newProjectCancelled () {
 //save the input value as the name of the new project and add to the project list array
 addNewProject.addEventListener("click", function getInputValue () {
     let projectName = projectNameInput.value 
+    if (projectName == null || projectName === " ") return
     projectNameInput.value = " "
-    projects.push(projectName)
+    const project = createProject(projectName)
+    projects.push(project)
     localStorage.setItem("projectsKey", JSON.stringify(projects))
     newProjectButton.style.visibility = "visible"
     newProjectEl.style.visibility = "hidden"
     renderProjects()
 })
 
+function createProject (name) {
+    let uniqueID = Math.floor(Math.random() * Date.now())
+    return {id:uniqueID, name: name, tasks: []}
+}
+
 //render out the list of projects on the page
 function renderProjects () {  
     let projectItems = " "
     for (let i = 0; i < projects.length; i++) { 
-        let uniqueID = Math.floor(Math.random() * Date.now())
+        
         projectItems += `
             <ul class="project-item"> 
-             <li id="${uniqueID}">${projects[i]}</li>
+             <li>${projects[i].name}</li>
             </ul>
        `
     }
