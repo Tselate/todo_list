@@ -44,17 +44,17 @@ addNewProject.addEventListener("click", function getInputValue () {
 
 function createProject (name) {
     let uniqueID = Math.floor(Math.random() * Date.now())
-    return {id:uniqueID, name: name, tasks: []}
+    return {name: name, tasks: []}
 }
 
 //render out the list of projects on the page
 function renderProjects () {  
     let projectItems = " "
     for (let i = 0; i < projects.length; i++) { 
-        
+        let uniqueID = Math.floor(Math.random() * Date.now())
         projectItems += `
             <ul class="project-item"> 
-             <li>${projects[i].name}</li>
+             <li id="${uniqueID}">${projects[i].name}</li>
             </ul>
        `
     }

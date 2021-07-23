@@ -52,13 +52,31 @@ function newTaskCancelled () {
 //Save new array to local storage 
 //let newTaskName = JSON.parse(localStorage.getItem("taskArrayKey")) || []
 
+const Local_Storage_selected_Project_Id_Key = "project.selectedId"
+let selectedProjectId = localStorage.getItem(Local_Storage_selected_Project_Id_Key)
+
 projectList.addEventListener("click", e => {
     if (e.target.tagName.toLowerCase() === "li") {   
+        selectedProjectId = e.target.id
+        taskDiv.innerHTML = "Project: Yes" 
+        newTask.style.visibility = "visible"
     }
-
+    
 })
 
+addNewTask.addEventListener("click", function printOut () {
+    const toDo = new task (tTitle.value, tDescription.value, tDueDate.value, tPriorty.value, tNotes.value, tNameId)
+    const selectedProject = projects.find(project => project.id = selectedProjectId)
+    selectedProject.tasks.push(toDo)
+    console.log(selectedProject)
+    save()
+   
+}) 
 
+function save () {
+    localStorage.setItem("projectsKey", JSON.stringify(projects))
+    localStorage.setItem(Local_Storage_selected_Project_Id_Key, selectedProjectId)
+}
 
 
 
