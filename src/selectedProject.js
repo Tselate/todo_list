@@ -15,17 +15,18 @@ let tDescription = document.getElementById("task-description")
 let tDueDate = document.getElementById("task-dueDate")
 let tPriorty = document.getElementById("task-priorty")
 let tNotes = document.getElementById("task-notes")
-let tNameId = "death"
+//local storage 
+const Local_Storage_selected_Project_Id_Key = "project.selectedId"
+let selectedProjectId = localStorage.getItem(Local_Storage_selected_Project_Id_Key)
 
 //Create a new task as an object 
 class task {
-    constructor(title, description, dueDate, priorty, notes, tNameId) {
+    constructor(title, description, dueDate, priorty, notes) {
       this.taskTitile = title
       this.taskDescription = description
       this.taskDueDate = dueDate
       this.taskPriorty = priorty
       this.taskNotes = notes
-      this.taskNameId = tNameId
     }
   }
 
@@ -49,11 +50,6 @@ function newTaskCancelled () {
     newTask.style.visibility = "visible" 
 }
 
-//Save new array to local storage 
-//let newTaskName = JSON.parse(localStorage.getItem("taskArrayKey")) || []
-
-const Local_Storage_selected_Project_Id_Key = "project.selectedId"
-let selectedProjectId = localStorage.getItem(Local_Storage_selected_Project_Id_Key)
 
 projectList.addEventListener("click", e => {
     if (e.target.tagName.toLowerCase() === "li") {   
@@ -107,21 +103,6 @@ function save () {
 
 
 
-//  projectList.addEventListener("click", function displayTasks (e) {
-//     let idOfProjectElement = e.target.id
-//     let selectedProject = document.getElementById(idOfProjectElement)
-//     //localStorage.clear("taskArrayKey")    
-//     console.log(newTaskName)
-//     const toDo = new task 
-//     for (let i = 0; i < newTaskName.length; i++) {
-//         if (newTaskName[i].taskNameId === selectedProject.innerHTML) {
-//            console.log(newTaskName[i].taskNameId)
-        
-//         }
-//     }
-
-   
-// })
 
 
 export function slectedProjectExported () {
