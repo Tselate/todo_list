@@ -56,23 +56,62 @@ projectList.addEventListener("click", e => {
         selectedProjectId = e.target.id
         taskDiv.innerHTML = "Project: Yes" 
         newTask.style.visibility = "visible"
+        renderTasks()
     }
     
 })
 
 addNewTask.addEventListener("click", function printOut () {
-    const toDo = new task (tTitle.value, tDescription.value, tDueDate.value, tPriorty.value, tNotes.value, tNameId)
+    const toDo = new task (tTitle.value, tDescription.value, tDueDate.value, tPriorty.value, tNotes.value)
     const selectedProject = projects.find(project => project.id = selectedProjectId)
     selectedProject.tasks.push(toDo)
     console.log(selectedProject)
-    save()
-   
+    renderTasks()
+    save() 
 }) 
 
 function save () {
     localStorage.setItem("projectsKey", JSON.stringify(projects))
     localStorage.setItem(Local_Storage_selected_Project_Id_Key, selectedProjectId)
 }
+
+//render out the list of projects on the page
+function renderTasks () {  
+    const selectedProject = projects.find(project => project.id = selectedProjectId)
+    console.log(selectedProject.tasks)
+    let taskItems = " "
+    for (let i = 0; i < selectedProject.tasks.length; i++) { 
+        let uniqueID = Math.floor(Math.random() * Date.now())
+        taskItems += `
+            <div class="task-item" id="${uniqueID}"> 
+                Title: ${selectedProject.tasks[i].taskTitile} <br>
+                Description: ${selectedProject.tasks[i].taskDescription}<br>
+                Due Date: ${selectedProject.tasks[i].taskDueDate} <br>
+                Priorty: ${selectedProject.tasks[i].taskPriorty} <br>
+                Notes: ${selectedProject.tasks[i].taskNotes} <br>
+                <button id="delete-tasks" >Delete</button>
+                <br>
+            </div>  
+       `
+       taskDiv.innerHTML = taskItems
+    }
+
+    let deleteTaskB = document.getElementById("delete-tasks")
+    deleteTaskB.addEventListener("click", function deleteTask () {
+        console.log("been clicked")
+    })
+    
+
+}
+
+// deleteButton.addEventListener('click', function deletedSelected () {
+//     let indexOfSelected = projects.indexOf(selectedElement.innerHTML)
+//     projects.splice(indexOfSelected, 1)
+//     localStorage.setItem("projectsKey", JSON.stringify(projects))
+//     renderProjects()
+//     deleteButton.style.visibility = "hidden"
+//     window.location.reload()
+// })
 
 
 
