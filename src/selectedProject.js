@@ -80,6 +80,7 @@ function renderTasks () {
     const selectedProject = projects.find(project => project.id = selectedProjectId)
     console.log(selectedProject.tasks)
     let taskItems = " "
+    let deleteID = "delete-tasks"
     for (let i = 0; i < selectedProject.tasks.length; i++) { 
         let uniqueID = Math.floor(Math.random() * Date.now())
         taskItems += `
@@ -89,19 +90,32 @@ function renderTasks () {
                 Due Date: ${selectedProject.tasks[i].taskDueDate} <br>
                 Priorty: ${selectedProject.tasks[i].taskPriorty} <br>
                 Notes: ${selectedProject.tasks[i].taskNotes} <br>
-                <button id="delete-tasks" >Delete</button>
+                <button id="${deleteID}">Delete</button><br>
                 <br>
             </div>  
        `
        taskDiv.innerHTML = taskItems
     }
 
-    let deleteTaskB = document.getElementById("delete-tasks")
-    deleteTaskB.addEventListener("click", function deleteTask () {
-        console.log("been clicked")
-    })
-    
 
+    taskDiv.addEventListener("click", e => {
+        if (e.target.tagName.toLowerCase() === "div") {   
+           let selectedTaskId = e.target.id
+           let oky = document.getElementById(selectedTaskId)
+           console.log(oky.taskTitile)
+            console.log(selectedTaskId)
+            //console.log(selectedProject.tasks[oky])
+            
+        }
+    })
+        
+        
+
+    deleteTask.style.visibility = "visible"
+    deleteTask.addEventListener("click", function deletedSelected () {
+        let indexofSelectdTask = selectedProject.tasks.indexOf(selectedProject.tasks[0].innerHTML)
+        console.log(indexofSelectdTask)
+    })
 }
 
 // deleteButton.addEventListener('click', function deletedSelected () {
