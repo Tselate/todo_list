@@ -118,14 +118,7 @@ function renderTasks () {
     })
 }
 
-// deleteButton.addEventListener('click', function deletedSelected () {
-//     let indexOfSelected = projects.indexOf(selectedElement.innerHTML)
-//     projects.splice(indexOfSelected, 1)
-//     localStorage.setItem("projectsKey", JSON.stringify(projects))
-//     renderProjects()
-//     deleteButton.style.visibility = "hidden"
-//     window.location.reload()
-// })
+
 
 
 
