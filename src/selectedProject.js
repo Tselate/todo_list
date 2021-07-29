@@ -61,11 +61,17 @@ projectList.addEventListener("click", e => {
     
 })
 
+const selectedProject = projects.find(project => project.id = selectedProjectId)
+    console.log(selectedProject)
+
+
+
 addNewTask.addEventListener("click", function printOut () {
     const toDo = new task (tTitle.value, tDescription.value, tDueDate.value, tPriorty.value, tNotes.value)
     const selectedProject = projects.find(project => project.id = selectedProjectId)
-    selectedProject.tasks.push(toDo)
     console.log(selectedProject)
+    selectedProject.tasks.push(toDo)
+    
     renderTasks()
     save() 
 }) 
@@ -98,24 +104,6 @@ function renderTasks () {
     }
 
 
-    taskDiv.addEventListener("click", e => {
-        if (e.target.tagName.toLowerCase() === "div") {   
-           let selectedTaskId = e.target.id
-           let oky = document.getElementById(selectedTaskId)
-           console.log(oky.taskTitile)
-            console.log(selectedTaskId)
-            //console.log(selectedProject.tasks[oky])
-            
-        }
-    })
-        
-        
-
-    deleteTask.style.visibility = "visible"
-    deleteTask.addEventListener("click", function deletedSelected () {
-        let indexofSelectdTask = selectedProject.tasks.indexOf(selectedProject.tasks[0].innerHTML)
-        console.log(indexofSelectdTask)
-    })
 }
 
 
