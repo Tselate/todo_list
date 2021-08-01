@@ -59,19 +59,24 @@ function renderProjects () {
 
 //Delete slected project item from projects array and re-render out list of projects
 projectList.addEventListener("click", function deleteSelectedProject (e) {
-    let idOfElement = e.target.id
-    let selectedElement = document.getElementById(idOfElement)
-    deleteButton.style.visibility = "visible"
+    if (e.target.tagName.toLowerCase() === "li") {
+        let idOfElement = e.target.id
+        let selectedElement = document.getElementById(idOfElement)
+        newProjectEl.style.visibility = "hidden"
+        deleteButton.style.visibility = "visible"
 
-    deleteButton.addEventListener('click', function deletedSelected () {
-        let indexOfSelected = projects.indexOf(selectedElement.innerHTML)
-        console.log(indexOfSelected)
-        projects.splice(indexOfSelected, 1)
-        localStorage.setItem("projectsKey", JSON.stringify(projects))
-        renderProjects()
-        deleteButton.style.visibility = "hidden"
-        window.location.reload()
-    })
+        deleteButton.addEventListener('click', function deletedSelected () {
+            let indexOfSelected = projects.indexOf(selectedElement.innerHTML)
+            console.log(indexOfSelected)
+            projects.splice(indexOfSelected, 1)
+            localStorage.setItem("projectsKey", JSON.stringify(projects))
+            renderProjects()
+            deleteButton.style.visibility = "hidden"
+            window.location.reload()
+        })
+    }
+   
+    
 })
 
 //create a new project 
