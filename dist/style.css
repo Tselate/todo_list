@@ -1,0 +1,18 @@
+body {
+    background: linear-gradient(to bottom right, rgb(88, 197, 224), rgb(231, 228, 228));
+    height: fit-content;
+
+}
+
+button {
+    border-radius: 5px;
+    border: 1px solid rgb(196, 182, 182);
+    background-color: khaki;
+}
+
+input {
+    border-radius: 3px;
+    border: 1px solid rgb(196, 182, 182);
+}
+
+

@@ -34,18 +34,13 @@ addNewProject.addEventListener("click", function getInputValue () {
     let projectName = projectNameInput.value 
     if (projectName == null || projectName === " ") return
     projectNameInput.value = " "
-    const project = createProject(projectName)
-    projects.push(project)
+    projects.push(projectName)
     localStorage.setItem("projectsKey", JSON.stringify(projects))
     newProjectButton.style.visibility = "visible"
     newProjectEl.style.visibility = "hidden"
     renderProjects()
 })
 
-function createProject (name) {
-    let uniqueID = Math.floor(Math.random() * Date.now())
-    return {name: name, tasks: []}
-}
 
 //render out the list of projects on the page
 function renderProjects () {  
@@ -54,7 +49,7 @@ function renderProjects () {
         let uniqueID = Math.floor(Math.random() * Date.now())
         projectItems += `
             <ul class="project-item"> 
-             <li id="${uniqueID}">${projects[i].name}</li>
+             <li id="${uniqueID}">${projects[i]}</li>
             </ul>
        `
     }
@@ -70,6 +65,7 @@ projectList.addEventListener("click", function deleteSelectedProject (e) {
 
     deleteButton.addEventListener('click', function deletedSelected () {
         let indexOfSelected = projects.indexOf(selectedElement.innerHTML)
+        console.log(indexOfSelected)
         projects.splice(indexOfSelected, 1)
         localStorage.setItem("projectsKey", JSON.stringify(projects))
         renderProjects()
